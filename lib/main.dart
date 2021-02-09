@@ -36,8 +36,22 @@ class _LogoAppState extends State<LogoApp> {
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    Size size = MediaQuery.of(context).size;
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                width: size.width / 3,
+                height: size.width /3,
+                child: Container(),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
