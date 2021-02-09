@@ -1,44 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
+import 'dart:math';
 void main() => runApp(LogoApp());
 
+
+Color randomColor(){
+  return Color(0xFFFFFFFF & Random().nextInt(0xFFFFFFFF));
+}
+
+double randomBRad(){
+  return Random().nextDouble() * 64;
+}
+
+double randomMar(){
+  return Random().nextDouble() * 64;
+}
+
 class LogoApp extends StatefulWidget {
+  @override
   _LogoAppState createState() => _LogoAppState();
 }
 
-class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin{
-  Animation<double> animation;
-  AnimationController controller;
-  @override
-  
-  
-  
-  void initState(){
-    super.initState();
-    controller = AnimationController(duration: Duration(seconds: 2), vsync: this);
-    animation = Tween<double>(begin: 0, end: 300).animate(controller)
-      ..addListener((){
-        setState((){
-          print(animation.status);
-        });
-        });
-    controller.forward();
-    }
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
-        height: animation.value,
-        width: animation.value,
-        child: FlutterLogo(),
-      ),
-    );
-  }
-  
-  void dispose(){
+class _LogoAppState extends State<LogoApp> {
+  Color color;
+  double borderRadius;
+  double margin;
 
-  controller.dispose();
-    super.dispose();
-    
+
+  @override
+  void initState() {
+    color = randomColor();
+    borderRadius = randomBRad();
+    margin = randomMar();
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
+    );
   }
 }
